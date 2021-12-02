@@ -6,13 +6,32 @@ def index(request):
 
 def register(request):
 
-    if request.method == 'POST':
-        data = request.POST.copy()
-        errors = form.get_validation_errors(data)
-        if not errors:
-            new_user = form.save(data)
-            return HttpResponseRedirect("/books/")
-    else:
-        data, errors = {}, {}
+    if (request.method == 'POST'):
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        email = request.POST.get('email')
 
-    return render(request,"registration/register.html")
+        user = User.objects.create_user(username=username, password=password, email=email)
+        user.save()
+
+        auth.login(request, user)
+        return HttpResponseRedirect("")
+
+    return render(request, 'registration.html')
+
+def login(request):
+
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = auth.authenticate(username = username, password = password)
+        if user is not None:
+            auth.login(request, user)
+            return HttpResponseRedirect("")
+
+    return render(request, 'login.html')
+
+def 
+
+

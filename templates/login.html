@@ -102,15 +102,16 @@
                                         <p>Please insert all inputs below.</p>
                                     </div>
 
-                                    <form action="index.html" method="POST" >
+                                    <form action="{% url 'login' %}" method="POST" >
+                                        {% csrf_token %}
                                         <div class="form-group">
                                             <label for="login-account">Account</label>
-                                            <input type="text" class="form-control" id="login-account" >
+                                            <input type="text" class="form-control" id="login-account" name="username">
                                         </div><!-- /.form-group -->
 
                                         <div class="form-group">
                                             <label for="login-password">Password</label>
-                                            <input type="password" class="form-control" id="login-password" data-show-password="true">
+                                            <input type="password" class="form-control" id="login-password" data-show-password="true" name="password">
                                         </div><!-- /.form-group -->
 
                                         <div class="forgot-passwd">
@@ -127,7 +128,8 @@
                                 </div><!-- /.tab-pane -->
 
                                 <div role="tabpanel" class="tab-pane" id="account-register">
-                                    <form action="index.html" method="POST" >
+                                    <form action="{% url 'register' %}" method="POST" >
+                                        {% csrf_token %}
                                         <div class="form-group">
                                             <label for="register-username">Username <sup>*</sup></label>
                                             <input type="text" class="form-control" id="register-username" name="username">
@@ -1969,7 +1971,7 @@
                      <div class="widget">
                         <h3 class="widget-title size-30">Sign Up For The Newsletter</h3>
                         <div class="newsletter-footer">
-                         <form action="index.html" method="GET">
+                         <form action="" method="GET">
                             <p>Subscribe for latest stories and promotions</p>
                             <div class="form-group-row">
                                 <div class="form-group">
