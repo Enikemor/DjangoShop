@@ -21,7 +21,8 @@
     </div>
 
 
-    <form action="checkout.html" method="POST" >
+    <form action="{% url 'order' %}" method="POST" >
+        {% csrf_token %}
         <div class="checkout-wrapper">
             <div class="container">
 
@@ -227,72 +228,72 @@
                                 </table>
                             </div><!-- /.cart-total -->
 
-                            <div class="cart-checkboxes">
+<!--                            <div class="cart-checkboxes">-->
 
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" value="">
-                                        <span>Direct Bank Transfer</span>
-                                    </label>
+<!--                                <div class="checkbox">-->
+<!--                                    <label>-->
+<!--                                        <input type="checkbox" value="">-->
+<!--                                        <span>Direct Bank Transfer</span>-->
+<!--                                    </label>-->
 
-                                    <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
-                                </div><!-- /.checkbox -->
+<!--                                    <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>-->
+<!--                                </div>&lt;!&ndash; /.checkbox &ndash;&gt;-->
 
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" value="">
-                                        <span>Cheque Payment</span>
-                                    </label>
-                                </div><!-- /.checkbox -->
+<!--                                <div class="checkbox">-->
+<!--                                    <label>-->
+<!--                                        <input type="checkbox" value="">-->
+<!--                                        <span>Cheque Payment</span>-->
+<!--                                    </label>-->
+<!--                                </div>&lt;!&ndash; /.checkbox &ndash;&gt;-->
 
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" value="">
-                                        <span>Credit Card</span>
-                                    </label>
+<!--                                <div class="checkbox">-->
+<!--                                    <label>-->
+<!--                                        <input type="checkbox" value="">-->
+<!--                                        <span>Credit Card</span>-->
+<!--                                    </label>-->
 
-                                    <ul class="list-payments list-inline">
-                                        <li>
-                                            <a href="#" title="">
-                                                <img src="./img/payments/american-express.png" alt="">
-                                            </a>
-                                        </li>
+<!--&lt;!&ndash;                                    <ul class="list-payments list-inline">&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <a href="#" title="">&ndash;&gt;-->
+<!--&lt;!&ndash;                                                <img src="./img/payments/american-express.png" alt="">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </li>&ndash;&gt;-->
 
-                                        <li>
-                                            <a href="#" title="">
-                                                <img src="./img/payments/mastercard.png" alt="">
-                                            </a>
-                                        </li>
+<!--&lt;!&ndash;                                        <li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <a href="#" title="">&ndash;&gt;-->
+<!--&lt;!&ndash;                                                <img src="./img/payments/mastercard.png" alt="">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </li>&ndash;&gt;-->
 
-                                        <li>
-                                            <a href="#" title="">
-                                                <img src="./img/payments/moneybookers.png" alt="">
-                                            </a>
-                                        </li>
+<!--&lt;!&ndash;                                        <li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <a href="#" title="">&ndash;&gt;-->
+<!--&lt;!&ndash;                                                <img src="./img/payments/moneybookers.png" alt="">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </li>&ndash;&gt;-->
 
-                                        <li>
-                                            <a href="#" title="">
-                                                <img src="./img/payments/paypal.png" alt="">
-                                            </a>
-                                        </li>
+<!--&lt;!&ndash;                                        <li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <a href="#" title="">&ndash;&gt;-->
+<!--&lt;!&ndash;                                                <img src="./img/payments/paypal.png" alt="">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </li>&ndash;&gt;-->
 
-                                        <li>
-                                            <a href="#" title="">
-                                                <img src="./img/payments/visa.png" alt="">
-                                            </a>
-                                        </li>
+<!--&lt;!&ndash;                                        <li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <a href="#" title="">&ndash;&gt;-->
+<!--&lt;!&ndash;                                                <img src="./img/payments/visa.png" alt="">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </li>&ndash;&gt;-->
 
-                                        <li>
-                                            <a href="#" title="">
-                                                <img src="./img/payments/2chekout.png" alt="">
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div><!-- /.checkbox -->
-                            </div><!-- /.cart-checkboxes -->
+<!--&lt;!&ndash;                                        <li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <a href="#" title="">&ndash;&gt;-->
+<!--&lt;!&ndash;                                                <img src="./img/payments/2chekout.png" alt="">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </ul>&ndash;&gt;-->
+<!--                                </div>&lt;!&ndash; /.checkbox &ndash;&gt;-->
+<!--                            </div>&lt;!&ndash; /.cart-checkboxes &ndash;&gt;-->
 
                             <div class="wc-proceed-to-checkout">
-                                <button class="btn btn-lg btn-primary">Check out</button>
+                                <button type="submit" class="btn btn-lg btn-primary">Check out</button>
                             </div><!-- /.wc-proceed-to-checkout -->
 
                         </div>

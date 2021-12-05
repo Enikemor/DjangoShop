@@ -24,7 +24,7 @@
 
 				<p class="my_cart">My Cart</p>
 
-				<form class="cart-form" action="/cart" method="post" novalidate="">
+				<form class="cart-form" action="{% url 'order' %}" method="GET" novalidate="">
 
 					<div class="table-responsive">
 
@@ -118,10 +118,10 @@
 										  <span class="price"><span class="money" data-currency-usd="$525.00">${{total}}</span></span>
 										</p>
 
-									<form method="GET" action="{% url 'order' %}">
-										{% csrf_token %}
+
+
 										<input type="submit" name="checkout" class="btn btn-lg btn-primary" value="Check Out">
-									</form>
+
 									</div>
 								</div>
 

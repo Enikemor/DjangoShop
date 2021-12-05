@@ -56,8 +56,7 @@ def show_cart(request):
     return render(request, 'shoping_cart_extended.html', {'products': products,'total':total})
 
 def add_to_cart(request, id):
-    print(request.user)
-    if request.user is not None:
+    if request.user.is_authenticated:
         print('entered if')
         user = request.user
         product = Product.objects.get(id = id)
@@ -71,7 +70,6 @@ def add_to_cart(request, id):
         currCart.save()
         return redirect('index')
     else:
-
         return redirect('login')
 
 
@@ -106,8 +104,13 @@ def order(request):
     for product in products:
         total += product.Price
     if request.method=='POST':
-        pass
-    return render(request, 'chekout_extended',{'products': products,'total':total})
+        qiwi_phone = '+79130731008'
+        url = 'https://qiwi.com/payment/form/99?extra%5B%27account%27%5D=' + qiwi_phone + '&amountInteger=' + str(
+            total) + '&amountFraction=' + str(0) + '&currency=643&blocked[0]=account'
+        answer = redirect(url)
+        print('redirect on payment')
+        return answer
+    return render(request, 'chekout_extended.html',{'products': products,'total':total})
 
 
 
