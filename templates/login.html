@@ -107,12 +107,12 @@
                                         {% csrf_token %}
                                         <div class="form-group">
                                             <label for="login-account">Account</label>
-                                            <input type="text" class="form-control" id="login-account">
+                                            <input type="text" class="form-control" id="login-account" name="username">
                                         </div><!-- /.form-group -->
 
                                         <div class="form-group">
                                             <label for="login-password">Password</label>
-                                            <input type="password" class="form-control" id="login-password" data-show-password="true">
+                                            <input type="password" class="form-control" id="login-password" data-show-password="true" name="password">
                                         </div><!-- /.form-group -->
 
                                         <div class="forgot-passwd">
@@ -199,96 +199,99 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="menubar-cart">
-                                        <a class="awemenu-icon menu-shopping-cart" title="" href="#">
-                                            <div class="icon icon-cart"></div>
-                                            <div class="text">
-                                                <p>My Cart</p>
-                                                <p class="cart-number">03 items - <span class="price">$450</span></p>
-                                            </div>
-                                        </a>
-
-                                        <ul class="submenu megamenu">
-                                            <li>
-                                                <div class="container-fluid">
-
-                                                    <ul class="whishlist">
-                                                        
-                                                        <li>
-                                                            <div class="whishlist-item">
-                                                                <div class="product-image">
-                                                                    <a href="#" title="">
-                                                                        <img src="./img/samples/products/cart/1.jpg" alt="">
-                                                                    </a>
-                                                                </div>
-
-                                                                <div class="product-body">
-                                                                    <div class="whishlist-name">
-                                                                        <h3><a href="#" title="">Gin Lane Greenport Cotton Shirt</a></h3>
-                                                                    </div>
-
-                                                                    <div class="whishlist-price">
-                                                                        <span>Price:</span>
-                                                                        <strong>$120</strong>
-                                                                    </div>
-
-                                                                    <div class="whishlist-quantity">
-                                                                        <span>Quantity:</span>
-                                                                        <span>1</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <a href="#" title="" class="remove">
-                                                                <i class="icon icon-remove"></i>
-                                                            </a>
-                                                        </li>
-                                                        
-                                                        <li>
-                                                            <div class="whishlist-item">
-                                                                <div class="product-image">
-                                                                    <a href="#" title="">
-                                                                        <img src="./img/samples/products/cart/1.jpg" alt="">
-                                                                    </a>
-                                                                </div>
-
-                                                                <div class="product-body">
-                                                                    <div class="whishlist-name">
-                                                                        <h3><a href="#" title="">Gin Lane Greenport Cotton Shirt</a></h3>
-                                                                    </div>
-
-                                                                    <div class="whishlist-price">
-                                                                        <span>Price:</span>
-                                                                        <strong>$120</strong>
-                                                                    </div>
-
-                                                                    <div class="whishlist-quantity">
-                                                                        <span>Quantity:</span>
-                                                                        <span>1</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <a href="#" title="" class="remove">
-                                                                <i class="icon icon-remove"></i>
-                                                            </a>
-                                                        </li>
-                                                        
-                                                    </ul>
-
-                                                    <div class="menu-cart-total">
-                                                        <span>Total</span>
-                                                        <span class="price">$180</span>
-                                                    </div>
-
-                                                    <div class="cart-action">
-                                                        <a href="cart.html" title="" class="btn btn-lg btn-dark btn-outline btn-block">View cart</a>
-                                                        <a href="checkout.html" title="" class="btn btn-lg btn-primary btn-block">Proceed To Checkout</a>
-                                                    </div>
+                                    {% if user.is_authenticated %}
+                                        <li class="menubar-cart">
+                                            <a class="awemenu-icon menu-shopping-cart" title="" href="#">
+                                                <div class="icon icon-cart"></div>
+                                                <div class="text">
+                                                    <p>My Cart</p>
+                                                    <p class="cart-number">03 items - <span class="price">$450</span></p>
                                                 </div>
-                                            </li>
-                                        </ul>
-                                    </li>
+                                            </a>
+
+                                            <ul class="submenu megamenu">
+                                                <li>
+                                                    <div class="container-fluid">
+
+                                                        <ul class="whishlist">
+                                                            
+                                                            <li>
+                                                                <div class="whishlist-item">
+                                                                    <div class="product-image">
+                                                                        <a href="#" title="">
+                                                                            <img src="./img/samples/products/cart/1.jpg" alt="">
+                                                                        </a>
+                                                                    </div>
+
+                                                                    <div class="product-body">
+                                                                        <div class="whishlist-name">
+                                                                            <h3><a href="#" title="">Gin Lane Greenport Cotton Shirt</a></h3>
+                                                                        </div>
+
+                                                                        <div class="whishlist-price">
+                                                                            <span>Price:</span>
+                                                                            <strong>$120</strong>
+                                                                        </div>
+
+                                                                        <div class="whishlist-quantity">
+                                                                            <span>Quantity:</span>
+                                                                            <span>1</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <a href="#" title="" class="remove">
+                                                                    <i class="icon icon-remove"></i>
+                                                                </a>
+                                                            </li>
+                                                            
+                                                            <li>
+                                                                <div class="whishlist-item">
+                                                                    <div class="product-image">
+                                                                        <a href="#" title="">
+                                                                            <img src="./img/samples/products/cart/1.jpg" alt="">
+                                                                        </a>
+                                                                    </div>
+
+                                                                    <div class="product-body">
+                                                                        <div class="whishlist-name">
+                                                                            <h3><a href="#" title="">Gin Lane Greenport Cotton Shirt</a></h3>
+                                                                        </div>
+
+                                                                        <div class="whishlist-price">
+                                                                            <span>Price:</span>
+                                                                            <strong>$120</strong>
+                                                                        </div>
+
+                                                                        <div class="whishlist-quantity">
+                                                                            <span>Quantity:</span>
+                                                                            <span>1</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <a href="#" title="" class="remove">
+                                                                    <i class="icon icon-remove"></i>
+                                                                </a>
+                                                            </li>
+                                                            
+                                                        </ul>
+
+                                                        <div class="menu-cart-total">
+                                                            <span>Total</span>
+                                                            <span class="price">$180</span>
+                                                        </div>
+
+                                                        <div class="cart-action">
+                                                            <a href="cart.html" title="" class="btn btn-lg btn-dark btn-outline btn-block">View cart</a>
+                                                            <a href="checkout.html" title="" class="btn btn-lg btn-primary btn-block">Proceed To Checkout</a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <a href="{% url 'logout' %}">logout</a>
+                                    {% endif %}
                                 </ul>
                                 <ul class="navbar-search">
                                     <li>

@@ -21,7 +21,7 @@ def register(request):
         user.save()
 
         auth.login(request, user)
-        return HttpResponseRedirect("")
+        return HttpResponseRedirect("/product_list")
 
     return render(request, 'registration.html')
 
@@ -34,7 +34,7 @@ def login(request):
         user = auth.authenticate(username = username, password = password)
         if user is not None:
             auth.login(request, user)
-            return HttpResponseRedirect("")
+            return HttpResponseRedirect("/product_list")
 
     return render(request, 'login.html')
 
