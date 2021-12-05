@@ -4,7 +4,7 @@ from django.shortcuts import render
 from mainApp.models import Users
 
 # Create your views here.
-from requests import auth
+from django.contrib import auth
 
 
 def index(request):
