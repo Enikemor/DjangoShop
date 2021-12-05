@@ -24,5 +24,9 @@ urlpatterns = [
     path('login', views.login, name='login'),
     path('register', views.register, name='register'),
     path('logout', authViews.LogoutView.as_view(next_page='product_list'), name='logout'),
-    path('product_list', views.index, name="product_list")
+    path('product_list', views.index, name="product_list"),
+    # path('add_to_cart/<int:id>',),
+    path('show_cart', views.show_cart, name='show_cart'),
+    # path('delete_product/<int:id>', ),
+    # path('order', )
 ]
