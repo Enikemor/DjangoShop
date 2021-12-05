@@ -1,8 +1,13 @@
+from django.contrib.auth.models import User
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
+from requests import auth
+
+
 def index(request):
-    return render(request,'home1.html')
+    return render(request,'login.html')
 
 def register(request):
 
@@ -32,6 +37,6 @@ def login(request):
 
     return render(request, 'login.html')
 
-def 
+
 
 
