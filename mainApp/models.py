@@ -12,10 +12,10 @@ class Product(models.Model):
     Naming=models.CharField(max_length=200, blank=True,null=True)
     Price=models.IntegerField( blank=True,null=True)
     Description=models.TextField(max_length=1000, blank=True,null=True)
-    Pics=models.ManyToManyField(ProdPict, blank=True,null=True)
+    Pics=models.ManyToManyField(ProdPict, blank=True)
 
 class Cart(models.Model):
-    ProdList=models.ManyToManyField(Product, blank=True,null=True)
+    ProdList=models.ManyToManyField(Product, blank=True)
     User=models.OneToOneField(Users, on_delete=models.CASCADE)
 
 
