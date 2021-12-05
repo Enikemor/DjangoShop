@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 <div id="main">
 
@@ -66,33 +67,33 @@
 
 
                 <div class="products">
-
+{% for product in products %}
                     <div class="col-md-12">
 
                         <div class="product product-list">
                             <div class="product-media">
                                 <div class="product-thumbnail">
                                     <a href="product-fullwidth.html" title="">
-                                        <img src="./img/samples/products/grid/1.jpg" alt="">
+                                        <img src="{% if product.Pics %}{{ product.Pics.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" alt="">
                                     </a>
                                 </div><!-- /.product-thumbnail -->
 
 
-                                <div class="product-hover">
-                                    <div class="product-actions">
-                                        <button  class="">
-                                            <span class="icon icon-shopping-bag"></span>
-                                        </button>
+<!--                                <div class="product-hover">-->
+<!--                                    <div class="product-actions">-->
+<!--                                        <button  class="">-->
+<!--                                            <span class="icon icon-shopping-bag"></span>-->
+<!--                                        </button>-->
 
-                                        <button  class="">
-                                            <span class="icon icon-star"></span>
-                                        </button>
+<!--                                        <button  class="">-->
+<!--                                            <span class="icon icon-star"></span>-->
+<!--                                        </button>-->
 
-                                        <button  class="">
-                                            <span class="fa fa-eye"></span>
-                                        </button>
-                                    </div>
-                                </div><!-- /.product-hover -->
+<!--                                        <button  class="">-->
+<!--                                            <span class="fa fa-eye"></span>-->
+<!--                                        </button>-->
+<!--                                    </div>-->
+<!--                                </div>&lt;!&ndash; /.product-hover &ndash;&gt;-->
 
 
 
@@ -104,16 +105,16 @@
 
                             <div class="product-body">
                                 <h2 class="product-name">
-                                    <a href="#" title="Gin Lane Greenport Cotton Shirt">Gin Lane Greenport Cotton Shirt</a>
+                                    <a href="#" title="Gin Lane Greenport Cotton Shirt">{{product.Naming}}</a>
                                 </h2><!-- /.product-product -->
 
-                                <div class="product-category">
-                                    <span>Jackets</span>
-                                </div><!-- /.product-category -->
+<!--                                <div class="product-category">-->
+<!--                                    <span>Jackets</span>-->
+<!--                                </div>&lt;!&ndash; /.product-category &ndash;&gt;-->
 
                                 <div class="product-price">
 
-                                    <span class="amount">$246</span>
+                                    <span class="amount">{{product.Price}}</span>
 
                                 </div><!-- /.product-price -->
 
@@ -128,311 +129,19 @@
                                 </div>
 
                                 <div class="product-description">
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                                    <p>{{product.Description}}</p>
                                 </div>
 
-                                <div class="product-list-actions">
+                                <form class="product-list-actions" method="POST" action="{% url 'add_to_cart' product.id %}">
+                                    {% csrf_token %}
                                     <button class="btn btn-lg btn-primary" >Add to cart</button>
-                                    <button class="btn btn-lg btn-dark btn-outline" >Add to wishlist</button>
-                                </div><!-- /.product-actions -->
+                                </form><!-- /.product-actions -->
 
                             </div><!-- /.product-body -->
                         </div><!-- /.product -->
 
                     </div>
-
-                    <div class="col-md-12">
-
-                        <div class="product product-list">
-                            <div class="product-media">
-                                <div class="product-thumbnail">
-                                    <a href="product-fullwidth.html" title="">
-                                        <img src="./img/samples/products/grid/1.jpg" alt="">
-                                    </a>
-                                </div><!-- /.product-thumbnail -->
-
-
-                                <div class="product-hover">
-                                    <div class="product-actions">
-                                        <button  class="">
-                                            <span class="icon icon-shopping-bag"></span>
-                                        </button>
-
-                                        <button  class="">
-                                            <span class="icon icon-star"></span>
-                                        </button>
-
-                                        <button  class="">
-                                            <span class="fa fa-eye"></span>
-                                        </button>
-                                    </div>
-                                </div><!-- /.product-hover -->
-
-
-
-                            </div><!-- /.product-media -->
-
-                            <div class="product-body">
-                                <h2 class="product-name">
-                                    <a href="#" title="Gin Lane Greenport Cotton Shirt">Gin Lane Greenport Cotton Shirt</a>
-                                </h2><!-- /.product-product -->
-
-                                <div class="product-category">
-                                    <span>Short</span>
-                                </div><!-- /.product-category -->
-
-                                <div class="product-price">
-
-                                    <span class="amount">$60</span>
-
-                                </div><!-- /.product-price -->
-
-                                <div class="product-stars">
-                                    <span class="rating">
-                                        <span class="star"></span>
-                                        <span class="star"></span>
-                                        <span class="star"></span>
-                                        <span class="star"></span>
-                                        <span class="star"></span>
-                                    </span>
-                                </div>
-
-                                <div class="product-description">
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-                                </div>
-
-                                <div class="product-list-actions">
-                                    <button class="btn btn-lg btn-primary" >Add to cart</button>
-                                    <button class="btn btn-lg btn-dark btn-outline" >Add to wishlist</button>
-                                </div><!-- /.product-actions -->
-
-                            </div><!-- /.product-body -->
-                        </div><!-- /.product -->
-
-                    </div>
-
-                    <div class="col-md-12">
-
-                        <div class="product product-list">
-                            <div class="product-media">
-                                <div class="product-thumbnail">
-                                    <a href="product-fullwidth.html" title="">
-                                        <img src="./img/samples/products/grid/1.jpg" alt="">
-                                    </a>
-                                </div><!-- /.product-thumbnail -->
-
-
-                                <div class="product-hover">
-                                    <div class="product-actions">
-                                        <button  class="">
-                                            <span class="icon icon-shopping-bag"></span>
-                                        </button>
-
-                                        <button  class="">
-                                            <span class="icon icon-star"></span>
-                                        </button>
-
-                                        <button  class="">
-                                            <span class="fa fa-eye"></span>
-                                        </button>
-                                    </div>
-                                </div><!-- /.product-hover -->
-
-
-
-                                <span class="product-label sale">
-                                    <span>sale</span>
-                                </span>
-
-                            </div><!-- /.product-media -->
-
-                            <div class="product-body">
-                                <h2 class="product-name">
-                                    <a href="#" title="Gin Lane Greenport Cotton Shirt">Gin Lane Greenport Cotton Shirt</a>
-                                </h2><!-- /.product-product -->
-
-                                <div class="product-category">
-                                    <span>Jackets</span>
-                                </div><!-- /.product-category -->
-
-                                <div class="product-price">
-
-                                    <span class="amount">$120</span>
-                                    <del class="amount">$320</del>
-
-                                </div><!-- /.product-price -->
-
-                                <div class="product-stars">
-                                    <span class="rating">
-                                        <span class="star"></span>
-                                        <span class="star"></span>
-                                        <span class="star"></span>
-                                        <span class="star"></span>
-                                        <span class="star"></span>
-                                    </span>
-                                </div>
-
-                                <div class="product-description">
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-                                </div>
-
-                                <div class="product-list-actions">
-                                    <button class="btn btn-lg btn-primary" >Add to cart</button>
-                                    <button class="btn btn-lg btn-dark btn-outline" >Add to wishlist</button>
-                                </div><!-- /.product-actions -->
-
-                            </div><!-- /.product-body -->
-                        </div><!-- /.product -->
-
-                    </div>
-
-                    <div class="col-md-12">
-
-                        <div class="product product-list">
-                            <div class="product-media">
-                                <div class="product-thumbnail">
-                                    <a href="product-fullwidth.html" title="">
-                                        <img src="./img/samples/products/grid/1.jpg" alt="">
-                                    </a>
-                                </div><!-- /.product-thumbnail -->
-
-
-                                <div class="product-hover">
-                                    <div class="product-actions">
-                                        <button  class="">
-                                            <span class="icon icon-shopping-bag"></span>
-                                        </button>
-
-                                        <button  class="">
-                                            <span class="icon icon-star"></span>
-                                        </button>
-
-                                        <button  class="">
-                                            <span class="fa fa-eye"></span>
-                                        </button>
-                                    </div>
-                                </div><!-- /.product-hover -->
-
-
-
-                                <span class="product-label hot">
-                                    <span>hot</span>
-                                </span>
-
-                            </div><!-- /.product-media -->
-
-                            <div class="product-body">
-                                <h2 class="product-name">
-                                    <a href="#" title="Gin Lane Greenport Cotton Shirt">Gin Lane Greenport Cotton Shirt</a>
-                                </h2><!-- /.product-product -->
-
-                                <div class="product-category">
-                                    <span>Shocks</span>
-                                </div><!-- /.product-category -->
-
-                                <div class="product-price">
-
-                                    <span class="amount">$12</span>
-
-                                </div><!-- /.product-price -->
-
-                                <div class="product-stars">
-                                    <span class="rating">
-                                        <span class="star"></span>
-                                        <span class="star"></span>
-                                        <span class="star"></span>
-                                        <span class="star"></span>
-                                        <span class="star"></span>
-                                    </span>
-                                </div>
-
-                                <div class="product-description">
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-                                </div>
-
-                                <div class="product-list-actions">
-                                    <button class="btn btn-lg btn-primary" >Add to cart</button>
-                                    <button class="btn btn-lg btn-dark btn-outline" >Add to wishlist</button>
-                                </div><!-- /.product-actions -->
-
-                            </div><!-- /.product-body -->
-                        </div><!-- /.product -->
-
-                    </div>
-
-                    <div class="col-md-12">
-
-                        <div class="product product-list">
-                            <div class="product-media">
-                                <div class="product-thumbnail">
-                                    <a href="product-fullwidth.html" title="">
-                                        <img src="./img/samples/products/grid/1.jpg" alt="">
-                                    </a>
-                                </div><!-- /.product-thumbnail -->
-
-
-                                <div class="product-hover">
-                                    <div class="product-actions">
-                                        <button  class="">
-                                            <span class="icon icon-shopping-bag"></span>
-                                        </button>
-
-                                        <button  class="">
-                                            <span class="icon icon-star"></span>
-                                        </button>
-
-                                        <button  class="">
-                                            <span class="fa fa-eye"></span>
-                                        </button>
-                                    </div>
-                                </div><!-- /.product-hover -->
-
-
-
-                                <span class="product-label new">
-                                    <span>new</span>
-                                </span>
-
-                            </div><!-- /.product-media -->
-
-                            <div class="product-body">
-                                <h2 class="product-name">
-                                    <a href="#" title="Gin Lane Greenport Cotton Shirt">Gin Lane Greenport Cotton Shirt</a>
-                                </h2><!-- /.product-product -->
-
-                                <div class="product-category">
-                                    <span>Jackets</span>
-                                </div><!-- /.product-category -->
-
-                                <div class="product-price">
-
-                                    <span class="amount">$145</span>
-
-                                </div><!-- /.product-price -->
-
-                                <div class="product-stars">
-                                    <span class="rating">
-                                        <span class="star"></span>
-                                        <span class="star"></span>
-                                        <span class="star"></span>
-                                        <span class="star"></span>
-                                        <span class="star"></span>
-                                    </span>
-                                </div>
-
-                                <div class="product-description">
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-                                </div>
-
-                                <div class="product-list-actions">
-                                    <button class="btn btn-lg btn-primary" >Add to cart</button>
-                                    <button class="btn btn-lg btn-dark btn-outline" >Add to wishlist</button>
-                                </div><!-- /.product-actions -->
-
-                            </div><!-- /.product-body -->
-                        </div><!-- /.product -->
-
-                    </div>
+    {% endfor %}
 
                 </div><!-- /.products -->
 

@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from mainApp.models import Users,Cart,Product
 
 # Create your views here.
@@ -9,7 +9,8 @@ from django.contrib import auth
 
 def index(request):
     # return render(request,'login.html')
-    return render(request,'login.html')
+    products=Product.objects.all()
+    return render(request,'product_list_extended.html',{'products':products})
 
 def register(request):
 
@@ -40,26 +41,73 @@ def login(request):
     return render(request, 'login.html')
 
 def show_cart(request):
-    user = request.user
-    products = Cart.objects.filter(User = user)
 
-    return render(request, 'chekout_extended.html', {'products': products})
+    user = request.user
+    try:
+        Cart.objects.get(User=user)
+    except:
+        cart = Cart(User=user)
+        cart.save()
+    cart=Cart.objects.get(User=user)
+    products = cart.ProdList.all()
+    total=0
+    for product in products:
+        total+=product.Price
+    return render(request, 'shoping_cart_extended.html', {'products': products,'total':total})
 
 def add_to_cart(request, id):
-    user = request.user
-    product = Product.objects.get(id = id)
-    cart = Cart(ProdList = product, Users = user)
-    cart.save()
+    print(request.user)
+    if request.user is not None:
+        print('entered if')
+        user = request.user
+        product = Product.objects.get(id = id)
+        try:
+            Cart.objects.get(User=user)
+        except:
+            cart = Cart(User=user)
+            cart.save()
+        currCart=Cart.objects.get(User=user)
+        currCart.ProdList.add(product)
+        currCart.save()
+        return redirect('index')
+    else:
 
-    return render(request, '')
+        return redirect('login')
+
 
 
 def delete_product(request, id):
-    user = request.user
-    product = Product.objects.get(id = id)
-    product = Cart.objects.get(User = user, ProdList = product)
+    if request.user is not None:
+        user = request.user
+        product = Product.objects.get(id = id)
+        try:
+            Cart.objects.get(User=user)
+        except:
+            cart = Cart(User=user)
+            cart.save()
+        currCart=Cart.objects.get(User=user)
+        currCart.ProdList.remove(product)
+        currCart.save()
+        return redirect('show_cart')
+    else:
 
-    return render(request, '')
+        return redirect('login')
+
+def order(request):
+    user = request.user
+    try:
+        Cart.objects.get(User=user)
+    except:
+        cart = Cart(User=user)
+        cart.save()
+    cart = Cart.objects.get(User=user)
+    products = cart.ProdList.all()
+    total = 0
+    for product in products:
+        total += product.Price
+    if request.method=='POST':
+        pass
+    return render(request, 'chekout_extended',{'products': products,'total':total})
 
 
 
